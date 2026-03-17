@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 // Usamos el código original (ej: "ro") para la imagen de la bandera si quieres, 
                 // o el nombre. Aquí uso el nombre formateado.
                 const slug = Helpers.slugify(item.name); 
-                const iconPath = `url('/assets/img/flags/${slug}.svg')`;
+                const iconPath = `url('assets/img/flags/${slug}.svg')`;
                 
                 return `
                     <div class="c-ranking__item position-${pos} name-${slug}">
