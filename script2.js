@@ -58,27 +58,29 @@ document.addEventListener("DOMContentLoaded", async () => {
             }))
             .sort((a, b) => b.avgScore - a.avgScore);
 
-        // 3. Renderizar solo el TOP 3 (Sin tabla)
-        if (topContainer) {
-            topContainer.innerHTML = list.slice(0, 3).map((item, i) => {
-                const pos = i + 1;
-                // Usamos el código original (ej: "ro") para la imagen de la bandera si quieres, 
-                // o el nombre. Aquí uso el nombre formateado.
-                const slug = Helpers.slugify(item.name); 
-                const iconPath = `url('assets/flags/${slug}.svg')`;
-                
-                return `
-                    <div class="c-ranking__item position-${pos} name-${slug}">
-                        <div class="c-ranking__flag">
-                            <div class="c-flag" style="--bg-flag: ${iconPath};"></div>
-                        </div>
-                        <div class="c-ranking__position">${Helpers.getOrdinal(pos)}</div>
-                        <div class="c-ranking__name">${Helpers.getDisplayName(item.name)}</div>
-                        <div class="c-ranking__num">${item.count} participantes</div>
-                        <div class="c-ranking__points">${item.avgScore} PTS</div>
-                    </div>`;
-            }).join("");
-        }
+        topContainer.innerHTML = list.slice(0, 3).map((item, i) => {
+    const pos = i + 1;
+    
+    // 1. Usamos el código original (es, fr, ro) para buscar el archivo .svg
+    const countryCode = item.name.toLowerCase().trim(); 
+    
+    // 2. Ruta corregida para GitHub Pages (incluyendo el nombre del repo /ranks/)
+    const iconPath = `url('/ranks/assets/flags/${countryCode}.svg')`;
+    
+    // 3. Usamos la traducción para el texto (Romania en lugar de ro)
+    const displayName = Helpers.getDisplayName(item.name);
+
+    return `
+        <div class="c-ranking__item position-${pos}">
+            <div class="c-ranking__flag">
+                <div class="c-flag" style="--bg-flag: ${iconPath};"></div>
+            </div>
+            <div class="c-ranking__position">${Helpers.getOrdinal(pos)}</div>
+            <div class="c-ranking__name">${displayName}</div>
+            <div class="c-ranking__num">${item.count} participantes</div>
+            <div class="c-ranking__points">${item.avgScore} PTS</div>
+        </div>`;
+}).join("");
 
     } catch (e) {
         console.error("Error en el Dashboard:", e);
