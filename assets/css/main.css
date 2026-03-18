@@ -2382,7 +2382,7 @@
 
 @layer pages {
 	body {
-		background-image: url("/assets/img/bg-cupra.webp");
+		background-image: url("https://github.com/jordiplanas/ranks/blob/779bef97c750176b2982a746c5d84979d951b1bb/assets/img/bg-cupra.webp");
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
