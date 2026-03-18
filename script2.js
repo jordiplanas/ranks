@@ -11,13 +11,14 @@ const Helpers = {
     slugify: (text) => text.toLowerCase().replace(/\s+/g, "-").trim(),
     getDisplayName: (name) => {
         const codes = { 
-            es: "Spain", de: "Germany", fr: "France", it: "Italy", 
-            gb: "United Kingdom", mx: "Mexico", ro: "Romania", 
-            pl: "Poland", pt: "Portugal", ch: "Switzerland", 
-            at: "Austria", be: "Belgium", nl: "Netherlands", 
-            se: "Sweden", dk: "Denmark", no: "Norway", 
-            fi: "Finland", cz: "Czech Republic", ie: "Ireland",
-            tr: "Turkey", gr: "Greece", hu: "Hungary", au: "Australia"
+       es: "Spain", de: "Germany", fr: "France", it: "Italy", 
+gb: "United Kingdom", mx: "Mexico", ro: "Romania", 
+pl: "Poland", pt: "Portugal", ch: "Switzerland", 
+at: "Austria", be: "Belgium", nl: "Netherlands", 
+se: "Sweden", dk: "Denmark", no: "Norway", 
+fi: "Finland", cz: "Czech Republic", ie: "Ireland",
+tr: "Turkey", gr: "Greece", hu: "Hungary", au: "Australia",
+hr: "Croatia", ma: "Morocco", co: "Colombia"
         };
         const code = name.toLowerCase().trim();
         return codes[code] || name;
